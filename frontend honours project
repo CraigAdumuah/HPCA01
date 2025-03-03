@@ -1,0 +1,70 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Table, TableHead, TableRow, TableCell, TableBody } from "@/components/ui/table";
+import { useState } from "react";
+
+const Login = () => {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <Card className="p-6 w-96">
+        <h2 className="text-xl font-bold mb-4">Login</h2>
+        <Input placeholder="Username" className="mb-2" />
+        <Input type="password" placeholder="Password" className="mb-4" />
+        <Button className="w-full">Login</Button>
+      </Card>
+    </div>
+  );
+};
+
+const Dashboard = () => {
+  const [patients] = useState([
+    { id: 1, name: "John Doe", age: 45, condition: "Diabetes" },
+    { id: 2, name: "Jane Smith", age: 30, condition: "Hypertension" },
+  ]);
+
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">Patient Dashboard</h2>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell>Age</TableCell>
+            <TableCell>Condition</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {patients.map((patient) => (
+            <TableRow key={patient.id}>
+              <TableCell>{patient.id}</TableCell>
+              <TableCell>{patient.name}</TableCell>
+              <TableCell>{patient.age}</TableCell>
+              <TableCell>{patient.condition}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <nav className="p-4 bg-gray-800 text-white flex justify-between">
+        <Link to="/">Dashboard</Link>
+        <Link to="/login">Login</Link>
+      </nav>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
