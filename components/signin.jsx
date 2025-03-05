@@ -1,11 +1,19 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import "../styles/Auth.css";  // Ensure this file exists
 
-const SignIn = () => {
+const SignIn = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // Redirect if already signed in
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,6 +21,7 @@ const SignIn = () => {
     // Simulate API call
     if (email === "user@example.com" && password === "password") {
       localStorage.setItem("token", "dummy-token");
+      setUser({ name: email.split("@")[0] }); // Extract username
       navigate("/dashboard");
     } else {
       setError("Invalid email or password.");
@@ -46,9 +55,7 @@ const SignIn = () => {
         <button type="submit">Sign In</button>
       </form>
       {error && <p className="error-message">{error}</p>}
-      <p>
-        Don't have an account? <a href="/register">Register</a>
-      </p>
+      <p>Don't have an account? <Link to="/register">Register</Link></p>
     </div>
   );
 };

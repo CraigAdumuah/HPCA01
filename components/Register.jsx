@@ -1,8 +1,9 @@
-// Register.jsx - Registration Page
+// components/Register.jsx - Registration Page
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Register.css";
 
-const Register = () => {
+const Register = ({ setUser }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -10,6 +11,7 @@ const Register = () => {
     password: "",
     dob: ""
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,7 +19,8 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("User Registered:", formData);
+    setUser({ name: formData.firstName });
+    navigate("/");
   };
 
   return (
