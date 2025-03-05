@@ -1,23 +1,32 @@
-// App.js - Main Navigation for Web App
+// App.jsx - Main App Structure with React Router
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
+import SignIn from "./components/SignIn";
 import Register from "./components/Register";
 import "./styles/App.css";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+    document.body.classList.toggle("dark-mode");
+  };
 
   return (
     <Router>
       <nav className="navbar">
         <Link to="/">Dashboard</Link>
-        {!user && <Link to="/login">Login</Link>}
+        {!user && <Link to="/signin">Sign In</Link>}
         {!user && <Link to="/register">Register</Link>}
+        <button onClick={toggleDarkMode} className="dark-mode-toggle">
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
       </nav>
       <Routes>
-        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/signin" element={<SignIn setUser={setUser} />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
         <Route path="/" element={<Dashboard user={user} />} />
       </Routes>
