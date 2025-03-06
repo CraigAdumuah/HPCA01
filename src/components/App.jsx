@@ -1,10 +1,10 @@
 // App.jsx - Main App Structure with React Router
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Dashboard from "/components/Dashboard";
-import SignIn from "./components/SignIn";
-import Register from "./components/Register";
-import "./styles/App.css";
+import Dashboard from "../Dashboard";
+import SignIn from "../SignIn";
+import Register from "../Register";
+import "../styles/App.css";
 
 const App = () => {
   const [user, setUser] = useState(null);
