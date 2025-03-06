@@ -5,6 +5,10 @@ import Dashboard from "./Dashboard";
 import SignIn from "./SignIn";
 import Register from "./Register";
 import "../styles/App.css";
+import "../styles/Dashboard.css";
+import "../styles/Register.css";
+import "../styles/SignIn.css";
+
 
 const App = () => {
   const [user, setUser] = useState(null);
