@@ -196,3 +196,85 @@ button:hover {
     padding: 20px;
   }
 }
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+body.dark-mode .navbar {
+  background-color: #333;
+}
+
+body.dark-mode .card {
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+/* Font Sizes */
+body[data-font-size="small"] {
+  font-size: 14px;
+}
+
+body[data-font-size="medium"] {
+  font-size: 16px;
+}
+
+body[data-font-size="large"] {
+  font-size: 18px;
+}
+
+/* Settings Page Styles */
+.settings-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.settings-section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .settings-section {
+  background-color: #2d2d2d;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.toggle-button {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background-color: #22c55e;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #15803d;
+}
+
+select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+body.dark-mode select {
+  background-color: #333;
+  color: white;
+  border-color: #444;
+}
